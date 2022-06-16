@@ -10,8 +10,11 @@ import javax.transaction.Transactional;
 @Service
 public class ParkingSpotService {
 
-    @Autowired// Like a constructor
-    ParkingSpotRepository parkingSpotRepository;
+    final ParkingSpotRepository parkingSpotRepository;
+
+    public ParkingSpotService(ParkingSpotRepository parkingSpotRepository) {
+        this.parkingSpotRepository = parkingSpotRepository;
+    }
 
     @Transactional
     public ParkingSpotModel save(ParkingSpotModel parkingSpotModel) {

@@ -17,8 +17,11 @@ import java.time.ZoneId;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/parking-spot")
 public class ParkingSpotController {
-    @Autowired//Constructor
-    ParkingSpotService parkingSpotService;
+    final ParkingSpotService parkingSpotService;
+
+    public ParkingSpotController(ParkingSpotService parkingSpotService) {
+        this.parkingSpotService = parkingSpotService;
+    }
 
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto){
